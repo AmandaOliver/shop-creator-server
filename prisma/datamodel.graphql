@@ -1,0 +1,10 @@
+type Product {
+  name: String! @unique
+  description: String
+  category: Category
+}
+
+type Category {
+  name: String
+  products: [Product!]!
+}

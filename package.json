@@ -1,0 +1,43 @@
+{
+	"name": "server",
+	"version": "1.0.0",
+	"description": "",
+	"author": "Amanda Oliver",
+	"license": "MIT",
+	"main": "server.js",
+	"scripts": {
+		"db:generate": "cd prisma && prisma generate && cd ..",
+		"db:deploy": "cd prisma && prisma deploy && cd ..",
+		"db:start": "cd prisma && docker-compose up -d && cd ..",
+		"db:stop": "cd prisma && docker-compose stop && cd ..",
+		"db:save": "yarn db:deploy && yarn db:generate && yarn db:start",
+		"server:start": "nodemon ./server.js --exec babel-node",
+		"start": " yarn db:start && yarn server:start"
+	},
+	"dependencies": {
+		"apollo-engine": "^1.1.2",
+		"apollo-server": "^2.1.0",
+		"apollo-server-express": "^2.1.0",
+		"body-parser": "^1.18.2",
+		"casual": "^1.5.17",
+		"compression": "^1.7.3",
+		"express": "^4.16.2",
+		"graphql": "^0.13.2",
+		"graphql-tools": "^2.13.0",
+		"lodash": "^4.17.4",
+		"node-fetch": "^1.7.3",
+		"prisma-client-lib": "^1.19.0",
+		"sequelize": "^4.28.2",
+		"sqlite": "^2.9.0"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-preset-env": "^1.6.1",
+		"nodemon": "^1.12.1"
+	},
+	"babel": {
+		"presets": [
+			"env"
+		]
+	}
+}
